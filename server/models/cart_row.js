@@ -1,14 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
-    "cart",
+    "cart_row",
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      payed: {
-        type: DataTypes.BOOLEAN,
+      amount: {
+        type: DataTypes.DOUBLE,
         allowNull: false,
       },
     },
