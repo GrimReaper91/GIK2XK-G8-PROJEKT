@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define(
+  const User = sequelize.define(
     "user",
     {
       id: {
@@ -36,6 +36,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    { underscored: true }
+    {
+      underscored: true,
+    }
   );
+
+  return User;
 };

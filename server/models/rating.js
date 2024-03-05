@@ -1,21 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
-  const CartRow = sequelize.define(
-    "cartrow",
+  const Rating = sequelize.define(
+    "rating",
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      amount: {
-        type: DataTypes.DOUBLE,
-        allowNull: false,
-      },
-      product_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      cart_id: {
+      rating: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -24,5 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       underscored: true,
     }
   );
-  return CartRow;
+
+  return Rating;
 };

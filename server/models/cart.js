@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define(
+  const Cart = sequelize.define(
     "cart",
     {
       id: {
@@ -11,7 +11,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
-    { underscored: true }
+    {
+      underscored: true,
+    }
   );
+
+  return Cart;
 };
