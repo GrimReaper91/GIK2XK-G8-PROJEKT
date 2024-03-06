@@ -11,14 +11,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DOUBLE,
         allowNull: false,
       },
-      product_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      cart_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
     },
     {
       underscored: true,

@@ -44,19 +44,19 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-// Relations
-db.user.hasMany(db.cart, { foreignKey: "user_id" });
-db.cart.belongsTo(db.user, {
-  foreignKey: "user_id",
+db.cart.belongsTo(db.user);
+db.user.hasMany(db.cart, {
   allowNull: false,
   onDelete: "CASCADE",
 });
 
-db.cartRow.belongsTo(db.cart, { foreignKey: "cart_id" });
-db.cart.hasMany(db.cartRow, { foreignKey: "cart_id" });
-
-db.product.hasMany(db.cartRow, { foreignKey: "product_id" });
-db.cartRow.belongsTo(db.product, { foreignKey: "product_id" });
+db.product.belongsToMany(db.cart, { through: db.cartrow });
+db.cart.belongsToMany(db.product, { through: db.cartrow });
 
 db.product.hasMany(db.rating, { foreignKey: "product_id" });
 db.rating.belongsTo(db.product, { foreignKey: "product_id" });
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;

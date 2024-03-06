@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       cart_row_id: {
         type: DataTypes.INTEGER,
-        allowNull: true, // Depending on your use case
+        allowNull: true,
       },
     },
     {
