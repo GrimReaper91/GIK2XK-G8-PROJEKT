@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       imageUrl: {
         type: DataTypes.STRING(255),
-        allowNull: false,
+        allowNull: true,
       },
       cart_row_id: {
         type: DataTypes.INTEGER,

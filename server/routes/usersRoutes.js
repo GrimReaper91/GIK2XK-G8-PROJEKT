@@ -6,7 +6,7 @@ const constraints = {
   email: {
     length: {
       minimum: 4,
-      maximum: 200,
+      maximum: 256,
       tooShort: "^Eposten måste vara minst %{count} tecken lång.",
       tooLong: "^Eposten får inte vara längre än %{count} tecken lång.",
     },

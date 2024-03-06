@@ -3,6 +3,12 @@ const db = require("../models");
 
 const cartService = require("../services/cartService");
 
+// const constraints = {
+//   payed: {
+//     boolean: true,
+//   },
+// }
+
 router.get("/", (req, res) => {
   cartService.getAll().then((result) => {
     res.status(result.status).json(result.data);
@@ -30,4 +36,5 @@ router.delete("/", (req, res) => {
     res.status(result.status).json(result.data);
   });
 });
+
 module.exports = router;
