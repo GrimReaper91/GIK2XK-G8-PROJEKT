@@ -1,5 +1,13 @@
 const router = require("express").Router();
 const db = require("../models");
+const cartService = require("../services/cartService");
+
+router.get("/:id/carts", (req, res) => {
+  const id = req.params.id;
+  cartService.getByProduct(id).then((result) => {
+    res.status(result.status).json(result.data);
+  });
+});
 
 router.get("/", (req, res) => {
   db.cartRow.findAll().then((result) => {

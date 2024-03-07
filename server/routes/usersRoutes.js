@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const db = require("../models");
 const validate = require("validate.js");
+const cartService = require("../services/cartService");
 
 const constraints = {
   email: {
@@ -31,6 +32,13 @@ const constraints = {
     },
   },
 };
+
+router.get("/:id/carts", (req, res) => {
+  const id = req.params.id;
+  cartService.getByAuthor(id).then((result) => {
+    res.status(result.status).json(result.data);
+  });
+});
 
 router.get("/", (req, res) => {
   db.user.findAll().then((result) => {

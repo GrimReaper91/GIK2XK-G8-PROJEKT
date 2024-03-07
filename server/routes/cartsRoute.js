@@ -1,6 +1,4 @@
 const router = require("express").Router();
-const db = require("../models");
-
 const cartService = require("../services/cartService");
 
 // const constraints = {
@@ -8,6 +6,20 @@ const cartService = require("../services/cartService");
 //     boolean: true,
 //   },
 // }
+
+router.post("/:id/addProduct", (req, res) => {
+  const product = req.body;
+  cartService.addProduct(id, product).then((result) => {
+    res.status(result.status).json(result.data);
+  });
+});
+
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  cartService.getById(id).then((result) => {
+    res.status(result.status).json(result.data);
+  });
+});
 
 router.get("/", (req, res) => {
   cartService.getAll().then((result) => {
