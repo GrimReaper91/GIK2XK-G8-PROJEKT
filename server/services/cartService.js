@@ -19,7 +19,7 @@ const constraints = {
 
 async function getByProduct(productId) {
   try {
-    const product = db.product.findOne({ where: { id: productId } });
+    const product = await db.product.findOne({ where: { id: productId } });
     const allCarts = await product.getCarts({ include: [db.user, db.cartrow] });
     return createResponseSuccess(allCarts.map((cart) => _formatCart(cart)));
   } catch (error) {
@@ -29,7 +29,7 @@ async function getByProduct(productId) {
 
 async function getByAuthor(userId) {
   try {
-    const user = db.user.findOne({ where: { id: userId } });
+    const user = await db.user.findOne({ where: { id: userId } });
     const allCarts = await user.getCarts({ include: [db.user, db.cartrow] });
     return createResponseSuccess(allCarts.map((cart) => _formatCart(cart)));
   } catch (error) {
@@ -177,7 +177,7 @@ function _formatCart(cart) {
 
 async function _findOrCreateTagId(name) {
   name = name.toLowerCase().trim();
-  const foundOrCreatedTag = await db.cartrow._findOrCreate({ where: { name } });
+  const foundOrCreatedTag = await db.cartrow.findOrCreate({ where: { name } });
 
   return foundOrCreatedTag[0].id;
 }

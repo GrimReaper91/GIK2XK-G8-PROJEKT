@@ -31,6 +31,11 @@ const constraints = {
       tooLong: "^Efternamnet får inte vara längre än %{count} tecken lång.",
     },
   },
+  imageUrl: {
+    url: {
+      message: "^Sökvägen är felaktig.",
+    },
+  },
 };
 
 router.get("/:id/carts", (req, res) => {
@@ -56,8 +61,6 @@ router.post("/", (req, res) => {
       res.send(result);
     });
   }
-
-  res.send(invalidData);
 });
 
 router.put("/", (req, res) => {
@@ -83,7 +86,7 @@ router.delete("/", (req, res) => {
       where: { id: req.body.id },
     })
     .then((result) => {
-      res.json(`Inlägget raderades ${result}`);
+      res.json(`Inlägget raderades`);
     });
 });
 module.exports = router;
