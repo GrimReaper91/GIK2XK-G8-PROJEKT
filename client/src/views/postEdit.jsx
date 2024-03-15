@@ -1,5 +1,5 @@
 function PostEdit() {
-  return <h2>PostEdit PostEdit</h2>;
+  return <h2>PostEdit</h2>;
 }
 
 export default PostEdit;
